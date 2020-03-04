@@ -20,7 +20,8 @@ import { CourseService } from './courses.service';
         </table>
         <button class="btn btn-primary" (click)="onSave($event)">Push Me!</button>
         <input (keyUp.enter)="onKeyUp()"/>
-        <input (keyUp.enter)="onKeyUpWithVar()"/>
+        <input [value]="email" (keyUp.enter)="onKeyUpWithVar()"/>
+        <input [(ngModel)]="email" (keyUp.enter)="onKeyUpWithVar()"/>
         `
 })
 export class CoursesComponent
@@ -29,6 +30,7 @@ export class CoursesComponent
     courses;
     imgUrl='https://live.staticflickr.com/4112/5170590074_714d36db83_b.jpg';
     colSpan=2;
+    email;
 
     constructor(service:CourseService)
     {
@@ -46,8 +48,8 @@ export class CoursesComponent
         console.log('Enter was pressed');
     }
 
-    onKeyUpWithVar(email)
+    onKeyUpWithVar()
     {
-        console.log(email);
+        console.log(this.email);
     }
 }
